@@ -6,7 +6,7 @@ function saludar() {
 
 saludar()
 let edad = Number(prompt('Ingrese su edad:    '))
-console.log('Iniciar funcion: procesarCompra')
+console.log('Iniciar funcion: procesarCompra()')
 
 if(edad >= 16) {
     alert('Es mayor de edad')
