@@ -5,7 +5,7 @@ function saludar() {
 }
 
 saludar()
-let edad = prompt('Ingrese su edad:    ')
+let edad = Number(prompt('Ingrese su edad:    '))
 console.log('Iniciar funcion: procesarCompra')
 
 if(edad >= 16) {
