@@ -9,7 +9,7 @@ saludar()
 const products = [
     { imageUrl: "assets/collar_Miku.jpeg", product: "Collar Miku", price: 3000, description: "Collar de plata 925", code: 1, stock: 100 },
     { imageUrl: "assets/lovering.jpeg", product: "Love ring", price: 2700, description: "anillo de plata 925", code: 2, stock: 100 },
-    { imageUrl: "assets/destinity.jpeg", product: "Destiny bracelet", price: 4500, description: "pulsera de plata 925", code: 3, stock: 100 },
+    { imageUrl: "assets/destiny.jpeg", product: "Destiny bracelet", price: 4500, description: "pulsera de plata 925", code: 3, stock: 100 },
     { imageUrl: "assets/sakura.jpeg", product: "Sakura", price: 5000, description: "Aretes de plata 925", code: 4, stock: 100 },
 ];
 
@@ -20,7 +20,7 @@ divRow.classList.add('row', 'w-100');
 
 for (const product of products) {
     const divCard = document.createElement('div');
-    divCard.classList.add('card', 'col-4');
+    divCard.classList.add('card', 'col-3');
     divCard.innerHTML = `
         <div class='card-body'>
         <img src="${product.imageUrl}" class='card-img-top' alt="${product.product}"/>
