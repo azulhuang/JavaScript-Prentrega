@@ -4,59 +4,82 @@ function saludar() {
 
 saludar()
 
-class Producto {
-    constructor(tittle, price, description, stock){
-        this.tittle = tittle
-        this.price = price
-        this.description = description
-        this.stock = stock
-    }
-    getPrecioConIVA() {
-        const iva = 0.21; 
-        const precioConIVA = this.price + (this.price * iva);
-        return precioConIVA;
-      }
+
+
+const products = [
+    { imageUrl: "assets/collar_Miku.jpeg", product: "Collar Miku", price: 3000, description: "Collar de plata 925", code: 1, stock: 100 },
+    { imageUrl: "assets/lovering.jpeg", product: "Love ring", price: 2700, description: "anillo de plata 925", code: 2, stock: 100 },
+    { imageUrl: "assets/destinity.jpeg", product: "Destiny bracelet", price: 4500, description: "pulsera de plata 925", code: 3, stock: 100 },
+    { imageUrl: "assets/sakura.jpeg", product: "Sakura", price: 5000, description: "Aretes de plata 925", code: 4, stock: 100 },
+];
+
+const contenedor = document.getElementById("contenedor");
+
+const divRow = document.createElement('div');
+divRow.classList.add('row', 'w-100');
+
+for (const product of products) {
+    const divCard = document.createElement('div');
+    divCard.classList.add('card', 'col-4');
+    divCard.innerHTML = `
+        <div class='card-body'>
+        <img src="${product.imageUrl}" class='card-img-top' alt="${product.product}"/>
+        <li>Product: ${product.product}</li>
+        <li>Price: ${product.price}</li>
+        <li>Description: ${product.description}</li>
+        <li>Stock: ${product.stock}</li>
+        <div class='card.footer'>
+            <button class='btn btn-outline-dark w-100' id=${product.code}>Add cart</button>
+
+        </div>
+    `;
+    divRow.appendChild(divCard);
 }
 
-const nuevoProducto = new Producto("Sakura", 2000, "aritos de plata 925", 100)
+contenedor.appendChild(divRow);
 
-const items = [
-    { tittle: "Collar Miku", price : 3000, description: "Collar de plata 925", stock: 100 },
-    { tittle: "Love ring", price: 2700 , description: "anillo de plata 925", stock: 100 },
-    { tittle: "Destiny bracelet", price : 4500 , description: "pulsera de plata 925", stock: 100 },
-]
+let productosElegidos = [];
 
+function llenarCarrito() {
+    const botones = document.querySelectorAll('button.btn');
+    
+    for (let boton of botones) {
+        boton.addEventListener('click', (e) => {
+            const productoElegido = products.find((product) => product.code === parseInt(e.target.id));
+            productosElegidos.push(productoElegido);
+            console.table(productosElegidos);
+            localStorage.setItem("productosElegidos", JSON.stringify(productosElegidos));
+        });
+    }
+}
 
-items.push(nuevoProducto)
-items.forEach((item) => {
-    const producto = new Producto(item.tittle, item.price, item.description, item.stock);
-    console.log("El precio final del producto "+ item.tittle + " es $" + producto.getPrecioConIVA()); 
-  });
-
-let resultado = items.find((item) => item.tittle === ("Collar Miku"))
-let resultado1 = items.find((item) => item.tittle === ("Love ring"))
-let resultado2 = items.find((item) => item.tittle === ("Destiny bracelet") )
-// let resultado3 = nuevoProducto.find((item) => item.tittle === ("Sakura") )
-
-console.table(items)
-
-console.log(resultado)
-console.log(resultado1)
-console.log(resultado2)
-// console.log(resultado3)
+llenarCarrito();
 
 
 
 
-// let quantityProduct = Number(prompt ("Cantidad de productos a ingresar"))
-
-// for (let index = 0; index < quantityProduct; index++) {
-//     let tittle = prompt ("ingresar tittle: ")
-//     let price = prompt ("ingresar price: ")
-//     let description = prompt ("ingresar description: ")
-//     let stock = prompt ("ingresar stock: ")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let miContenedor = document.getElementById('contenedor')
+// contenedor.addcart = (evt)=> {
+//     evt.preventDefault()
+//     let addcart = evt.target
+
+//     console
 // }
 
 
@@ -127,10 +150,66 @@ console.log(resultado2)
 
 
 
+// Entrega II
+// class Producto {
+//     constructor(tittle, price, description, stock){
+//         this.tittle = tittle
+//         this.price = price
+//         this.description = description
+//         this.stock = stock
+//     }
+//     getPrecioConIVA() {
+//         const iva = 0.21; 
+//         const precioConIVA = this.price + (this.price * iva);
+//         return precioConIVA;
+//       }
+// }
+
+// const nuevoProducto = new Producto("Sakura", 2000, "aritos de plata 925", 100)
+
+// const items = [
+//     { tittle: "Collar Miku", price : 3000, description: "Collar de plata 925", stock: 100 },
+//     { tittle: "Love ring", price: 2700 , description: "anillo de plata 925", stock: 100 },
+//     { tittle: "Destiny bracelet", price : 4500 , description: "pulsera de plata 925", stock: 100 },
+// ]
+
+
+// items.push(nuevoProducto)
+// items.forEach((item) => {
+//     const producto = new Producto(item.tittle, item.price, item.description, item.stock);
+//     console.log("El precio final del producto "+ item.tittle + " es $" + producto.getPrecioConIVA()); 
+//   });
+
+// let resultado = items.find((item) => item.tittle === ("Collar Miku"))
+// let resultado1 = items.find((item) => item.tittle === ("Love ring"))
+// let resultado2 = items.find((item) => item.tittle === ("Destiny bracelet") )
+
+// console.table(items)
+
+// console.log(resultado)
+// console.log(resultado1)
+// console.log(resultado2)
 
 
 
 
+
+// let quantityProduct = Number(prompt ("Cantidad de productos a ingresar"))
+
+// for (let index = 0; index < quantityProduct; index++) {
+//     let tittle = prompt ("ingresar tittle: ")
+//     let price = prompt ("ingresar price: ")
+//     let description = prompt ("ingresar description: ")
+//     let stock = prompt ("ingresar stock: ")
+
+
+// }
+
+
+
+
+
+// Entrega1
 // // console.log("Hola usuario")
 
 // function saludar() {
